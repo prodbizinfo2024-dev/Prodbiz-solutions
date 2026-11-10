@@ -507,16 +507,18 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 23,
-    title: "RICCH HOTELS",
+    title: "FIRE AND TUNS",
     category: "Flyers",
     filter: "FLYERS",
-    image: "/our-work/flyers/ricchhotel-1.png",
+    image: "/our-work/flyers/fireandtuns-1.png",
     height: "380px",
     bgColor: "bg-[#184a41]",
     gallery: [
-      "/our-work/flyers/ricchhotel-1.png",
-      "/our-work/flyers/ricchhotel-2.jpg",
-      "/our-work/flyers/ricchhotel-3.png",
+      "/our-work/flyers/fireandtuns-1.png",
+      "/our-work/flyers/fireandtuns-2.jpg",
+      "/our-work/flyers/fireandtuns-3.png",
+      "/our-work/flyers/fireandtuns-4.jpeg",
+      "/our-work/flyers/fireandtuns-5.jpeg",
     ],
     clientOverview: "Luxury hospitality and weekend staycation flyer series designed for Ricch Hotels, highlighting room packages, banquet spaces, and premier guest amenities.",
     services: [
@@ -529,7 +531,7 @@ const portfolioItems: PortfolioItem[] = [
   },
   {
     id: 24,
-    title: "RICCH",
+    title: "RICCH HOTELS",
     category: "Flyers",
     filter: "FLYERS",
     image: "/our-work/flyers/ricch-1.png",
