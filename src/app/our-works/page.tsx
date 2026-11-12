@@ -32,7 +32,8 @@ const filters = [
   "HOARDINGS",
   "AUTO ADS",
   "VIDEO EDITING & REELS",
-  "SOCIAL MEDIA MANAGEMENT"
+  "SOCIAL MEDIA MANAGEMENT",
+  "CREATIVE DESIGNS"
 ];
 
 const portfolioItems: PortfolioItem[] = [
@@ -627,6 +628,8 @@ const portfolioItems: PortfolioItem[] = [
     gallery: [
       "/our-work/menucards/ricch-1.png",
       "/our-work/menucards/ricch-2.png",
+      "/our-work/menucards/ricch-3.png",
+      "/our-work/menucards/ricch-4.png",
     ],
     clientOverview: "Sophisticated multi-course dining and banquet menu card design crafted for Ricch Hotels, blending fine-dining elegance with clear typographic dish categorization.",
     services: [
@@ -700,6 +703,47 @@ const portfolioItems: PortfolioItem[] = [
       "Outdoor Print Specs"
     ],
     challenge: "Ensuring critical hospital service offerings and emergency telephone numbers remain instantly recognizable and readable from fast-moving traffic."
+  },
+  {
+    id: 32,
+    title: "RICCH HOTELS",
+    category: "Entry Ticket Design",
+    filter: "CREATIVE DESIGNS",
+    image: "/our-work/creativedesigns/ricch-1.png",
+    height: "380px",
+    bgColor: "bg-[#184a41]",
+    gallery: [
+      "/our-work/creativedesigns/ricch-1.png",
+    ],
+    clientOverview: "Exclusive luxury entry ticket and event pass design crafted for Ricch Hotels, blending sophisticated hospitality aesthetics with functional event entry details.",
+    services: [
+      "Luxury Entry Ticket Layout",
+      "Event Pass & Access Branding",
+      "Typography & Hierarchy System",
+      "High-Resolution Print Specifications"
+    ],
+    challenge: "Designing an elegant, high-prestige entry ticket that conveys exclusivity and celebration while ensuring event details and branding remain clear."
+  },
+  {
+    id: 33,
+    title: "LALITHA",
+    category: "Creative Designs",
+    filter: "CREATIVE DESIGNS",
+    image: "/our-work/creativedesigns/lalitha-1.png",
+    height: "380px",
+    bgColor: "bg-[#492c28]",
+    gallery: [
+      "/our-work/creativedesigns/lalitha-1.png",
+      "/our-work/creativedesigns/lalitha-2.png",
+    ],
+    clientOverview: "Creative promotional artworks, customized retail branding, and visual marketing assets designed for Lalitha to showcase exclusive offerings.",
+    services: [
+      "Custom Creative Layouts",
+      "Brand Marketing Visuals",
+      "Promotional Graphic Assets",
+      "High-Resolution Print Prep"
+    ],
+    challenge: "Developing eye-catching creative designs that highlight promotional offerings while maintaining Lalitha's distinctive brand prestige."
   },
 ];
 
@@ -1208,64 +1252,70 @@ export default function OurWorksPage() {
 
             {/* Cards Grid Container (Responsive: Mobile 1 col x 6, 1024-1400px 2 cols x 3, >1400px 3 cols x 3) */}
             <div id="works-grid" className="w-full flex-1 flex flex-col scroll-mt-28">
-              <motion.div
-                className="w-full grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-6 max-[439px]:gap-4.5 lg:gap-5 min-[1400px]:gap-6"
-                initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                {paginatedItems.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    onClick={() => setSelectedProject(item)}
-                    className={`relative group rounded-2xl max-[439px]:rounded-xl lg:rounded-xl xl:rounded-2xl min-[1400px]:rounded-2xl overflow-hidden cursor-pointer w-full h-[340px] max-[439px]:h-[260px] sm:h-[360px] lg:h-[320px] xl:h-[340px] min-[1400px]:h-[350px] ${item.bgColor} shadow-sm hover:shadow-xl transition-all duration-300`}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.05 }}
-                  >
-                    <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="absolute inset-0 w-full h-full object-cover object-top sm:object-center transition-transform duration-700 group-hover:scale-105"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
+              {filteredItems.length === 0 ? (
+                <div className="w-full py-20 flex flex-col items-center justify-center text-center">
+                  <p className="text-[#796864] text-base font-semibold">No designs added in this category yet.</p>
+                </div>
+              ) : (
+                <motion.div
+                  className="w-full grid grid-cols-1 lg:grid-cols-2 min-[1400px]:grid-cols-3 gap-6 max-[439px]:gap-4.5 lg:gap-5 min-[1400px]:gap-6"
+                  initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                  {paginatedItems.map((item, index) => (
+                    <motion.div
+                      key={item.id}
+                      onClick={() => setSelectedProject(item)}
+                      className={`relative group rounded-2xl max-[439px]:rounded-xl lg:rounded-xl xl:rounded-2xl min-[1400px]:rounded-2xl overflow-hidden cursor-pointer w-full h-[340px] max-[439px]:h-[260px] sm:h-[360px] lg:h-[320px] xl:h-[340px] min-[1400px]:h-[350px] ${item.bgColor} shadow-sm hover:shadow-xl transition-all duration-300`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.05 }}
+                    >
+                      <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white to-transparent"></div>
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="absolute inset-0 w-full h-full object-cover object-top sm:object-center transition-transform duration-700 group-hover:scale-105"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                        }}
+                      />
 
-                    {/* Video Play Icon overlay for Video types */}
-                    {item.isVideo && (
-                      <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
-                        <div className="w-16 h-16 max-[439px]:w-12 max-[439px]:h-12 lg:w-11 lg:h-11 xl:w-13 xl:h-13 min-[1400px]:w-16 min-[1400px]:h-16 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:bg-[#ff863c] transition-all duration-300 border border-white/20">
-                          <svg className="w-6 h-6 max-[439px]:w-4.5 max-[439px]:h-4.5 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 min-[1400px]:w-6 min-[1400px]:h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                      {/* Video Play Icon overlay for Video types */}
+                      {item.isVideo && (
+                        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+                          <div className="w-16 h-16 max-[439px]:w-12 max-[439px]:h-12 lg:w-11 lg:h-11 xl:w-13 xl:h-13 min-[1400px]:w-16 min-[1400px]:h-16 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center group-hover:scale-110 group-hover:bg-[#ff863c] transition-all duration-300 border border-white/20">
+                            <svg className="w-6 h-6 max-[439px]:w-4.5 max-[439px]:h-4.5 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 min-[1400px]:w-6 min-[1400px]:h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Subtle Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+
+
+                      {/* Content Bottom */}
+                      <div className="absolute bottom-0 left-0 w-full p-5 max-[439px]:p-3.5 lg:p-3.5 xl:p-4 min-[1400px]:p-5 flex justify-between items-end z-10">
+                        <div className="flex flex-col justify-end">
+                          <h3 className="text-white text-lg max-[439px]:text-[15px] lg:text-[14px] xl:text-[16px] min-[1400px]:text-lg font-bold leading-tight tracking-wide mb-1 drop-shadow-md">
+                            {item.title}
+                          </h3>
+                          <p className="text-white/70 text-xs max-[439px]:text-[10px] lg:text-[10.5px] xl:text-[11px] min-[1400px]:text-xs font-medium tracking-wider uppercase drop-shadow-md">
+                            {item.category}
+                          </p>
+                        </div>
+
+                        {/* Action Button */}
+                        <div className="w-12 h-12 lg:w-8 lg:h-8 xl:w-10 xl:h-10 min-[1400px]:w-12 min-[1400px]:h-12 rounded-full bg-[#184a41] flex items-center justify-center text-white opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-[inset_0px_-4px_6px_rgba(0,0,0,0.5),inset_0px_2px_4px_rgba(255,255,255,0.25),0px_10px_20px_rgba(0,0,0,0.4)] border border-[#0f302b] hover:brightness-125 group/btn">
+                          <svg className="w-6 h-6 lg:w-4 lg:h-4 xl:w-5 xl:h-5 min-[1400px]:w-6 min-[1400px]:h-6 transition-transform duration-300 group-hover/btn:translate-x-1.5 group-hover/btn:scale-110 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                          </svg>
                         </div>
                       </div>
-                    )}
-
-                    {/* Subtle Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-
-
-                    {/* Content Bottom */}
-                    <div className="absolute bottom-0 left-0 w-full p-5 max-[439px]:p-3.5 lg:p-3.5 xl:p-4 min-[1400px]:p-5 flex justify-between items-end z-10">
-                      <div className="flex flex-col justify-end">
-                        <h3 className="text-white text-lg max-[439px]:text-[15px] lg:text-[14px] xl:text-[16px] min-[1400px]:text-lg font-bold leading-tight tracking-wide mb-1 drop-shadow-md">
-                          {item.title}
-                        </h3>
-                        <p className="text-white/70 text-xs max-[439px]:text-[10px] lg:text-[10.5px] xl:text-[11px] min-[1400px]:text-xs font-medium tracking-wider uppercase drop-shadow-md">
-                          {item.category}
-                        </p>
-                      </div>
-
-                      {/* Action Button */}
-                      <div className="w-12 h-12 lg:w-8 lg:h-8 xl:w-10 xl:h-10 min-[1400px]:w-12 min-[1400px]:h-12 rounded-full bg-[#184a41] flex items-center justify-center text-white opacity-0 translate-y-6 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 shadow-[inset_0px_-4px_6px_rgba(0,0,0,0.5),inset_0px_2px_4px_rgba(255,255,255,0.25),0px_10px_20px_rgba(0,0,0,0.4)] border border-[#0f302b] hover:brightness-125 group/btn">
-                        <svg className="w-6 h-6 lg:w-4 lg:h-4 xl:w-5 xl:h-5 min-[1400px]:w-6 min-[1400px]:h-6 transition-transform duration-300 group-hover/btn:translate-x-1.5 group-hover/btn:scale-110 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
